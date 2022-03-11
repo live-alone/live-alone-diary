@@ -3,6 +3,7 @@
   "private": true,
   "workspaces": {
     "packages": [
+      "packages/db",
       "packages/*"
     ]
   },
@@ -11,7 +12,8 @@
   "license": "MIT",
   "scripts": {
     "dev": "yarn workspace core dev",
-    "build": "yarn workspace core build",
+    "api:dev": "yarn workspace core-api start:dev",
+    "build": "yarn workspaces run build",
     "start": "yarn workspace core start"
   },
   "devDependencies": {
