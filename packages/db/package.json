@@ -12,7 +12,7 @@
     ]
   },
   "scripts": {
-    "start": "tsc"
+    "build": "tsc"
   },
   "license": "MIT",
   "dependencies": {
