@@ -87,8 +87,8 @@ body *{
 
 @font-face {
   font-family: 'godo';
-  src: url('./fonts/GoDo/GodoB.ttf') format('truetype'),
-  url('./fonts/GoDo/GodoM.ttf') format('truetype');
+  src: url('fonts/GoDo/GodoB.ttf') format('truetype'),
+  url('fonts/GoDo/GodoM.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
 }
