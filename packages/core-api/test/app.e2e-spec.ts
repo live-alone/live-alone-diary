@@ -22,12 +22,11 @@ describe('UserController (e2e)', () => {
       .expect('Hello World!');
   });
 
-  it('/user (POST)', () => {
-    return request(app.getHttpServer())
+  it('/user (POST)', async () => {
+    const result = await request(app.getHttpServer())
       .post('/user')
       .type('application/json')
-      .send({ data: 'test' })
-      .expect(200)
-      .expect('SUCCESS');
+      .send({ data: 'test' });
+    expect(result.status).toBe(200);
   });
 });

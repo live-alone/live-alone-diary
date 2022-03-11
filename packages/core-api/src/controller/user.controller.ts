@@ -12,6 +12,6 @@ export class UserController {
   @Post()
   @HttpCode(200)
   async setUserData(@Body('data') data: string): Promise<string> {
-    return this.appService.setUserData(data);
+    return await this.appService.setUserData(data);
   }
 }
