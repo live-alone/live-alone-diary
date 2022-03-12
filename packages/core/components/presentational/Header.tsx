@@ -8,11 +8,12 @@ const Header = styled.header`
   padding: 0 50px;
   align-items: center;
   border-bottom: 1px solid #dbdbdb;
-  background-color: #fff;
+  background: ${(props: HeaderProps) =>
+    props.landing ? 'transparent' : '#fff'};
 `;
 
 const MenuWrapper = styled.nav`
-  display: flex;
+  display: ${(props: HeaderProps) => (props.landing ? 'none' : 'flex')};
 `;
 
 const MenuItem = styled.a`
@@ -47,11 +48,15 @@ const LoginButton = styled.button`
   margin-left: auto;
 `;
 
-const HeaderWrapper = () => {
+interface HeaderProps {
+  landing: boolean;
+}
+
+const HeaderWrapper = (props: HeaderProps) => {
   return (
-    <Header>
+    <Header landing={props.landing}>
       <HeaderLogo>자취일기</HeaderLogo>
-      <MenuWrapper>
+      <MenuWrapper landing={props.landing}>
         <MenuItem>커뮤니티</MenuItem>
         <MenuItem>혼밥지도</MenuItem>
         <MenuItem>배달공구</MenuItem>
