@@ -6,6 +6,7 @@ import axios from 'axios';
 const SearchBox = styled.input`
   width: 300px;
   height: 50px;
+  padding: 0 15px;
 `;
 
 const SelectArea = styled.article`
@@ -17,7 +18,13 @@ const SelectAreaItem = styled.article`
   height: 600px;
   margin: 0 15px;
   border: solid 1px;
-  overflow: hidden;
+  background: #fff;
+  overflow: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 interface SelectAreaProps {}
@@ -28,9 +35,18 @@ const SelectAreaWrapper = (props: SelectAreaProps) => {
     district: string[];
   }
   const [area, setArea] = useState<Area>({
-    town: undefined,
-    district: undefined,
+    town: [],
+    district: [],
   });
+  interface SearchText {
+    townSearch: string;
+    districtSearch: string;
+  }
+  const [searchText, setSearchText] = useState<SearchText>({
+    townSearch: '',
+    districtSearch: '',
+  });
+
   const getArea = async () => {
     const town = await axios.get(`http://localhost:4000/area?modelName=town`);
     const district = await axios.get(
@@ -42,18 +58,43 @@ const SelectAreaWrapper = (props: SelectAreaProps) => {
     getArea().then((res) => {
       setArea(res);
     });
-  });
+  }, []);
+
   return (
     <>
       <SelectArea>
         <SelectAreaItem>서울</SelectAreaItem>
         <SelectAreaItem>
-          <SearchBox></SearchBox>
-          <AreaListWrapper areaList={area.district} />
+          <SearchBox
+            value={searchText.districtSearch}
+            onChange={(e) => {
+              setSearchText({
+                ...searchText,
+                districtSearch: e.target.value.replace(/[^가-힣|^ㄱ-ㅎ]/, ''),
+              });
+            }}
+          />
+          <AreaListWrapper
+            areaList={area.district.filter(
+              (t) => t.indexOf(searchText.districtSearch) + 1,
+            )}
+          />
         </SelectAreaItem>
         <SelectAreaItem>
-          <SearchBox></SearchBox>
-          <AreaListWrapper areaList={area.town} />
+          <SearchBox
+            value={searchText.townSearch}
+            onChange={(e) =>
+              setSearchText({
+                ...searchText,
+                districtSearch: e.target.value.replace(/[^가-힣|^ㄱ-ㅎ]/, ''),
+              })
+            }
+          />
+          <AreaListWrapper
+            areaList={area.town.filter(
+              (t) => t.indexOf(searchText.townSearch) + 1,
+            )}
+          />
         </SelectAreaItem>
       </SelectArea>
     </>

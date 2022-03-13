@@ -20,8 +20,8 @@ const AreaListWrapper = (props: AreaListProps) => {
     <>
       <AreaUl>
         {props.areaList
-          ? props.areaList.map((area) => {
-              return <AreaLi>{area}</AreaLi>;
+          ? props.areaList.map((area, idx) => {
+              return <AreaLi key={idx}>{area}</AreaLi>;
             })
           : null}
       </AreaUl>
