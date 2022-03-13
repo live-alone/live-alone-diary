@@ -15,7 +15,7 @@ const Layout = ({ children, props }: LayoutProps) => {
         @import
         url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700&display=swap');
       </style>
-      <HeaderWrapper landing={props.displayName === 'Landing'} />
+      <HeaderWrapper landing={/[Landing|Login]/.test(props.displayName)} />
       {children}
     </>
   );
