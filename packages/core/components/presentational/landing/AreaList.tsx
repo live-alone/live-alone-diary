@@ -1,7 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const AreaUl = styled.ul``;
+const AreaUl = styled.ul`
+  height: 550px;
+  overflow: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+`;
 
 const AreaLi = styled.li`
   height: 50px;
