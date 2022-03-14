@@ -4,7 +4,7 @@ import AreaListWrapper from '@presentational/landing/AreaList';
 import axios from 'axios';
 
 const SearchBox = styled.input`
-  width: 300px;
+  width: 100%;
   height: 50px;
   padding: 0 15px;
 `;
@@ -13,18 +13,13 @@ const SelectArea = styled.article`
   display: flex;
   justify-content: center;
 `;
+
 const SelectAreaItem = styled.article`
   width: 300px;
   height: 600px;
   margin: 0 15px;
   border: solid 1px;
   background: #fff;
-  overflow: scroll;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-  &::-webkit-scrollbar {
-    display: none;
-  }
 `;
 
 interface SelectAreaProps {}
