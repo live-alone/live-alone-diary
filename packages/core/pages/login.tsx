@@ -12,8 +12,6 @@ const LoginWrapper = styled.article`
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: solid #dbdbdb 1px;
-  border-radius: 4px;
   margin-top: 15px;
   width: 300px;
 `;
@@ -21,11 +19,17 @@ const LoginWrapper = styled.article`
 const Id = styled.input`
   width: 100%;
   height: 40px;
+  border: solid #dbdbdb 1px;
+  border-radius: 4px 4px 0 0;
+  padding: 0 15px;
 `;
 const Pass = styled.input`
   width: 100%;
   height: 40px;
-  border-top: solid #dbdbdb 1px;
+  border: solid #dbdbdb;
+  border-width: 0 1px 1px 1px;
+  border-radius: 0 0 4px 4px;
+  padding: 0 15px;
 `;
 
 const LoginButton = styled.button`
@@ -57,8 +61,8 @@ const Login = () => {
     <>
       <LoginMain>
         <LoginWrapper>
-          <Id />
-          <Pass />
+          <Id placeholder={'아이디'} />
+          <Pass placeholder={'비밀번호'} />
         </LoginWrapper>
         <LoginButton>로그인</LoginButton>
         <LoginText>
