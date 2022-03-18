@@ -13,7 +13,7 @@ const Header = styled.header`
 `;
 
 const MenuWrapper = styled.nav`
-  display: ${(props: HeaderProps) => (props.landing ? 'none' : 'flex')};
+  display: flex;
 `;
 
 const MenuItem = styled.a`
@@ -50,18 +50,21 @@ const LoginButton = styled.button`
 
 interface HeaderProps {
   landing: boolean;
+  login: boolean;
 }
 
 const HeaderWrapper = (props: HeaderProps) => {
   return (
-    <Header landing={props.landing}>
+    <Header landing={props.landing} login={false}>
       <HeaderLogo>자취일기</HeaderLogo>
-      <MenuWrapper landing={props.landing}>
-        <MenuItem>커뮤니티</MenuItem>
-        <MenuItem>혼밥지도</MenuItem>
-        <MenuItem>배달공구</MenuItem>
-      </MenuWrapper>
-      <LoginButton>로그인</LoginButton>
+      {props.landing ? null : (
+        <MenuWrapper>
+          <MenuItem>커뮤니티</MenuItem>
+          <MenuItem>혼밥지도</MenuItem>
+          <MenuItem>배달공구</MenuItem>
+        </MenuWrapper>
+      )}
+      {props.login ? null : <LoginButton>로그인</LoginButton>}
     </Header>
   );
 };

@@ -6,6 +6,8 @@ const LoginMain = styled.main`
   background: #f3f5f6;
   flex-direction: column;
   align-items: center;
+  min-height: 70vh;
+  justify-content: center;
 `;
 
 const LoginWrapper = styled.article`

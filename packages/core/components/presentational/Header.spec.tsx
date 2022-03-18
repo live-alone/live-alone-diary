@@ -4,13 +4,13 @@ import HeaderWrapper from '@presentational/Header';
 import React from 'react';
 
 test('landing false check', () => {
-  const { container } = render(<HeaderWrapper landing={false} />);
+  const { container } = render(<HeaderWrapper landing={false} login={false} />);
   expect(container.children[0]).toMatchSnapshot();
   expect(container.children[0]).toHaveStyleRule('background', '#fff');
 });
 
 test('landing true check', () => {
-  const { container } = render(<HeaderWrapper landing={true} />);
+  const { container } = render(<HeaderWrapper landing={true} login={false} />);
   expect(container.children[0]).toMatchSnapshot();
   expect(container.children[0]).toHaveStyleRule('background', 'transparent');
 });
